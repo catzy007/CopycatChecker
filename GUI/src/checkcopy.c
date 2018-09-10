@@ -308,6 +308,10 @@ float test3(char *filename1, char *filename2, char *resultS3){
 	}
 	countN=countT-countC;
 	result=((float)countC/(float)countT)*100;
+	if(result>100.0){
+		result=100;
+	}
+	
 	sprintf(resultS3,"%.2f%%",result);
 	
 //free some memmory

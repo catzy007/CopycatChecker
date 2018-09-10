@@ -7,6 +7,7 @@
     <property name="title" translatable="yes">Copycat Tester</property>
     <property name="default_width">400</property>
     <property name="default_height">200</property>
+    <property name="icon">../Icon.png</property>
     <signal name="destroy" handler="on_window_main_destroy" swapped="no"/>
     <child>
       <placeholder/>
@@ -54,7 +55,7 @@
         </child>
         <child>
           <object class="GtkButton" id="BtnCalculate">
-            <property name="label" translatable="yes">Calculate</property>
+            <property name="label" translatable="yes">Calculate!</property>
             <property name="width_request">150</property>
             <property name="height_request">30</property>
             <property name="visible">True</property>
@@ -81,9 +82,6 @@
             <property name="label" translatable="yes">Test 1 : </property>
             <property name="justify">center</property>
           </object>
-          <packing>
-            <property name="x">100</property>
-          </packing>
         </child>
         <child>
           <object class="GtkLabel" id="TextTst2">
@@ -97,7 +95,6 @@
             <property name="justify">center</property>
           </object>
           <packing>
-            <property name="x">100</property>
             <property name="y">40</property>
           </packing>
         </child>
@@ -113,7 +110,6 @@
             <property name="justify">center</property>
           </object>
           <packing>
-            <property name="x">100</property>
             <property name="y">80</property>
           </packing>
         </child>
@@ -130,7 +126,7 @@
             <property name="justify">center</property>
           </object>
           <packing>
-            <property name="x">150</property>
+            <property name="x">50</property>
           </packing>
         </child>
         <child>
@@ -146,7 +142,7 @@
             <property name="justify">center</property>
           </object>
           <packing>
-            <property name="x">150</property>
+            <property name="x">50</property>
             <property name="y">40</property>
           </packing>
         </child>
@@ -163,7 +159,7 @@
             <property name="justify">center</property>
           </object>
           <packing>
-            <property name="x">150</property>
+            <property name="x">50</property>
             <property name="y">80</property>
           </packing>
         </child>
@@ -177,6 +173,9 @@
             <property name="margin_top">10</property>
             <property name="label" translatable="yes">Mul 1 </property>
           </object>
+          <packing>
+            <property name="x">115</property>
+          </packing>
         </child>
         <child>
           <object class="GtkLabel" id="TxtStr2">
@@ -189,6 +188,7 @@
             <property name="label" translatable="yes">Mul 2 </property>
           </object>
           <packing>
+            <property name="x">115</property>
             <property name="y">40</property>
           </packing>
         </child>
@@ -203,6 +203,7 @@
             <property name="label" translatable="yes">Mul 3 </property>
           </object>
           <packing>
+            <property name="x">115</property>
             <property name="y">80</property>
           </packing>
         </child>
@@ -215,13 +216,13 @@
             <property name="tooltip_text" translatable="yes">Change Value of Multiplier for Better Result</property>
             <property name="margin_left">10</property>
             <property name="margin_top">10</property>
-            <property name="max_length">3</property>
+            <property name="max_length">5</property>
             <property name="width_chars">3</property>
-            <property name="text" translatable="yes">0.2</property>
+            <property name="text" translatable="yes">0.25</property>
             <property name="input_purpose">number</property>
           </object>
           <packing>
-            <property name="x">50</property>
+            <property name="x">160</property>
           </packing>
         </child>
         <child>
@@ -233,13 +234,13 @@
             <property name="tooltip_text" translatable="yes">Change Value of Multiplier for Better Result</property>
             <property name="margin_left">10</property>
             <property name="margin_top">10</property>
-            <property name="max_length">3</property>
+            <property name="max_length">5</property>
             <property name="width_chars">3</property>
-            <property name="text" translatable="yes">0.3</property>
+            <property name="text" translatable="yes">0.25</property>
             <property name="input_purpose">number</property>
           </object>
           <packing>
-            <property name="x">50</property>
+            <property name="x">160</property>
             <property name="y">40</property>
           </packing>
         </child>
@@ -252,13 +253,13 @@
             <property name="tooltip_text" translatable="yes">Change Value of Multiplier for Better Result</property>
             <property name="margin_left">10</property>
             <property name="margin_top">10</property>
-            <property name="max_length">3</property>
+            <property name="max_length">5</property>
             <property name="width_chars">3</property>
             <property name="text" translatable="yes">0.5</property>
             <property name="input_purpose">number</property>
           </object>
           <packing>
-            <property name="x">50</property>
+            <property name="x">160</property>
             <property name="y">80</property>
           </packing>
         </child>

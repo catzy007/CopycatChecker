@@ -72,7 +72,7 @@ void on_SelFile2_file_set(GtkFileChooser *SelectedFile2){
 //button calculate
 void on_BtnCalculate_clicked(){
 	//some variables
-	float Tst1,Tst2,Tst3,Percent;
+	float Tst1,Tst2,Tst3,Percent,SumMul;
 	char HasilS1[10]="\0";
 	char HasilS2[10]="\0";
 	char HasilS3[10]="\0";
@@ -86,31 +86,41 @@ void on_BtnCalculate_clicked(){
 	float Mul2=atof(MulStr2);
 	const gchar *MulStr3=gtk_entry_get_text(GTK_ENTRY(g_StrIpt3));
 	float Mul3=atof(MulStr3);
+	SumMul=Mul1+Mul2+Mul3;
 	//printf("%.2f %.2f %.2f %.2f\n",Mul1,Mul2,Mul3,Mul1+Mul2+Mul3); //debug_line_can_be_removed
 
 	//filename checker and status
 	if(FileName1!=NULL && FileName2!=NULL){
-		//if exist then run all test
-		Tst1=test1(FileName1,FileName2,HasilS1);
-		Tst2=test2(FileName1,FileName2,HasilS2);
-		Tst3=test3(FileName1,FileName2,HasilS3);
-		//printf("%s\n%s\n%s\n",hasilS1,hasilS2,hasilS3); //debug_line_can_be_removed
-		//calculate final result and convert to string
-		Percent=(Tst1*Mul1)+(Tst2*Mul2)+(Tst3*Mul3);
-		sprintf(PerStr,"%.2f%%",Percent);
-		strcpy(Status,"Done!");
+		if(SumMul!=1){
+			Tst1=0;Tst2=0;Tst3=0;
+			strcpy(PerStr,"0.00%");
+			strcpy(HasilS1,"0.00%");
+			strcpy(HasilS2,"0.00%");
+			strcpy(HasilS3,"0.00%");
+			strcpy(Status,"Sum of Multiplier Must Exactly 1.");
+		}else{
+			//if exist then run all test
+			Tst1=test1(FileName1,FileName2,HasilS1);
+			Tst2=test2(FileName1,FileName2,HasilS2);
+			Tst3=test3(FileName1,FileName2,HasilS3);
+			//printf("%s\n%s\n%s\n",hasilS1,hasilS2,hasilS3); //debug_line_can_be_removed
+			//calculate final result and convert to string
+			Percent=(Tst1*Mul1)+(Tst2*Mul2)+(Tst3*Mul3);
+			sprintf(PerStr,"%.2f%%",Percent);
+			strcpy(Status,"Done!");
+		} 
 	}else{
 		Tst1=0;Tst2=0;Tst3=0;
 		strcpy(PerStr,"0.00%");
 		strcpy(HasilS1,"0.00%");
 		strcpy(HasilS2,"0.00%");
 		strcpy(HasilS3,"0.00%");
-		if(FileName1==NULL){
+		if(SumMul!=1){
+			strcpy(Status,"Sum of Multiplier Must Exactly 1.");
+		}else if(FileName1==NULL){
 			strcpy(Status,"Select File1.");
 		}else if(FileName2==NULL){
 			strcpy(Status,"Select File2.");
-		}else if((Mul1+Mul2+Mul3)!=1){
-			strcpy(Status,"Sum of Multiplier Must Exactly 1.");
 		}
 	}
 	
