@@ -11,15 +11,17 @@ GtkWidget *g_StrIpt3;
 GtkWidget *g_TxtTst1;
 GtkWidget *g_TxtTst2;
 GtkWidget *g_TxtTst3;
-
-GtkWidget *g_TxtStatus;
+GtkWidget *g_TxtError;
 GtkWidget *g_TxtPercent;
+
+GtkWidget *g_windowErr;
+GtkWidget *g_windowAbout;
 
 int main(int argc, char *argv[])
 {
-    GtkBuilder      *builder; 
-	GtkWidget       *window;
-
+    GtkBuilder		*builder; 
+	GtkWidget		*window;
+	
     gtk_init(&argc, &argv);
 
     builder = gtk_builder_new();
@@ -34,13 +36,15 @@ int main(int argc, char *argv[])
     g_TxtTst1 = GTK_WIDGET(gtk_builder_get_object(builder,"TxtTst1"));
     g_TxtTst2 = GTK_WIDGET(gtk_builder_get_object(builder,"TxtTst2"));
     g_TxtTst3 = GTK_WIDGET(gtk_builder_get_object(builder,"TxtTst3"));
-	
-	g_TxtStatus = GTK_WIDGET(gtk_builder_get_object(builder,"TxtStatus"));
-	g_TxtPercent = GTK_WIDGET(gtk_builder_get_object(builder,"TxtPercent"));
-	
-///Line Above is i/o
+    g_TxtError = GTK_WIDGET(gtk_builder_get_object(builder,"TxtError"));
+	g_TxtPercent = GTK_WIDGET(gtk_builder_get_object(builder,"TxtPercent"));	
 	
     window = GTK_WIDGET(gtk_builder_get_object(builder, "window_main"));
+    g_windowErr = GTK_WIDGET(gtk_builder_get_object(builder, "window_error"));
+    g_windowAbout = GTK_WIDGET(gtk_builder_get_object(builder, "window_about"));
+
+///Line Above is i/o
+    
     gtk_builder_connect_signals(builder, NULL);
 
     g_object_unref(builder);
@@ -55,6 +59,21 @@ int main(int argc, char *argv[])
 void on_window_main_destroy()
 {
     gtk_main_quit();
+}
+
+//if close button clicked hide window error
+void on_BtnErrorClose_clicked(){
+	gtk_widget_hide(g_windowErr);
+}
+
+//if close button clicked hide window about
+void on_BtnAboutClose_clicked(){
+	gtk_widget_hide(g_windowAbout);
+}
+
+//about window
+void on_BtnAboutStatus_clicked(){
+	gtk_widget_show(g_windowAbout);
 }
 
 //file selector 1
@@ -77,7 +96,8 @@ void on_BtnCalculate_clicked(){
 	char HasilS2[10]="\0";
 	char HasilS3[10]="\0";
 	char PerStr[10]="\0";
-	char Status[50]="\0";
+	char ErrTxt[50]="\0";
+	int ErrStats=0;
 
 	//get value from Mul1-Mul3 and convert to float
 	const gchar *MulStr1=gtk_entry_get_text(GTK_ENTRY(g_StrIpt1));
@@ -89,43 +109,38 @@ void on_BtnCalculate_clicked(){
 	SumMul=Mul1+Mul2+Mul3;
 	//printf("%.2f %.2f %.2f %.2f\n",Mul1,Mul2,Mul3,Mul1+Mul2+Mul3); //debug_line_can_be_removed
 
-	//filename checker and status
-	if(FileName1!=NULL && FileName2!=NULL){
-		if(SumMul!=1){
-			Tst1=0;Tst2=0;Tst3=0;
-			strcpy(PerStr,"0.00%");
-			strcpy(HasilS1,"0.00%");
-			strcpy(HasilS2,"0.00%");
-			strcpy(HasilS3,"0.00%");
-			strcpy(Status,"Sum of Multiplier Must Exactly 1.");
-		}else{
-			//if exist then run all test
-			Tst1=test1(FileName1,FileName2,HasilS1);
-			Tst2=test2(FileName1,FileName2,HasilS2);
-			Tst3=test3(FileName1,FileName2,HasilS3);
-			//printf("%s\n%s\n%s\n",hasilS1,hasilS2,hasilS3); //debug_line_can_be_removed
-			//calculate final result and convert to string
-			Percent=(Tst1*Mul1)+(Tst2*Mul2)+(Tst3*Mul3);
-			sprintf(PerStr,"%.2f%%",Percent);
-			strcpy(Status,"Done!");
-		} 
+	//error checker and status
+	if(SumMul!=1){
+		ErrStats=1;
+		strcpy(ErrTxt,"Sum of Multiplier Must Exactly 1");
+	}else if(FileName1==NULL){
+		ErrStats=2;
+		strcpy(ErrTxt,"Select File1 Before Proceeding");
+	}else if(FileName2==NULL){
+		ErrStats=3;
+		strcpy(ErrTxt,"Select File2 Before Proceeding");
+	}
+	
+	if(ErrStats<1){
+		//if no error then run all test
+		Tst1=test1(FileName1,FileName2,HasilS1);
+		Tst2=test2(FileName1,FileName2,HasilS2);
+		Tst3=test3(FileName1,FileName2,HasilS3);
+		//printf("%s\n%s\n%s\n",hasilS1,hasilS2,hasilS3); //debug_line_can_be_removed
+		//calculate final result and convert to string
+		Percent=(Tst1*Mul1)+(Tst2*Mul2)+(Tst3*Mul3);
+		sprintf(PerStr,"%.2f%%",Percent);
 	}else{
 		Tst1=0;Tst2=0;Tst3=0;
 		strcpy(PerStr,"0.00%");
 		strcpy(HasilS1,"0.00%");
 		strcpy(HasilS2,"0.00%");
 		strcpy(HasilS3,"0.00%");
-		if(SumMul!=1){
-			strcpy(Status,"Sum of Multiplier Must Exactly 1.");
-		}else if(FileName1==NULL){
-			strcpy(Status,"Select File1.");
-		}else if(FileName2==NULL){
-			strcpy(Status,"Select File2.");
-		}
+		gtk_label_set_text(GTK_LABEL(g_TxtError),ErrTxt);
+		gtk_widget_show(g_windowErr);
 	}
 	
 	//put all data to GUI
-	gtk_label_set_text(GTK_LABEL(g_TxtStatus),Status);
 	gtk_label_set_text(GTK_LABEL(g_TxtTst1),HasilS1);
 	gtk_label_set_text(GTK_LABEL(g_TxtTst2),HasilS2);
 	gtk_label_set_text(GTK_LABEL(g_TxtTst3),HasilS3);
