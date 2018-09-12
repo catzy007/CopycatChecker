@@ -17,6 +17,12 @@ GtkWidget *g_TxtPercent;
 GtkWidget *g_windowErr;
 GtkWidget *g_windowAbout;
 
+gboolean on_widget_deleted(GtkWidget *widget, GdkEvent *event, gpointer data)
+{
+    gtk_widget_hide(widget);
+    return TRUE;
+}
+
 int main(int argc, char *argv[])
 {
     GtkBuilder		*builder; 
@@ -42,6 +48,10 @@ int main(int argc, char *argv[])
     window = GTK_WIDGET(gtk_builder_get_object(builder, "window_main"));
     g_windowErr = GTK_WIDGET(gtk_builder_get_object(builder, "window_error"));
     g_windowAbout = GTK_WIDGET(gtk_builder_get_object(builder, "window_about"));
+    
+    //signal to avoid close button destroying window
+    g_signal_connect(G_OBJECT(g_windowErr), "delete-event", G_CALLBACK(on_widget_deleted), NULL);
+    g_signal_connect(G_OBJECT(g_windowAbout), "delete-event", G_CALLBACK(on_widget_deleted), NULL);
 
 ///Line Above is i/o
     
