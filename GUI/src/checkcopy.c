@@ -209,7 +209,7 @@ float test3(char *filename1, char *filename2, char *resultS3){
 		fgets(text1,maxlen,file1);
 		ptrtxt1[i]=malloc(sizeof(char)*maxlen);
 		memcpy(ptrtxt1[i],text1,maxlen);
-		//printf("%d %s",i,ptrtxt1[i]); //debug_line_can_be_removed
+		//printf("%.3d %s",i,ptrtxt1[i]); //debug_line_can_be_removed
 		i++;
 	}
 	fclose(file1);
@@ -224,17 +224,17 @@ float test3(char *filename1, char *filename2, char *resultS3){
 		fgets(text2,maxlen,file2);
 		ptrtxt2[i]=malloc(sizeof(char)*maxlen);
 		memcpy(ptrtxt2[i],text2,maxlen);
-		//printf("%d %s",i,ptrtxt2[i]); //debug_line_can_be_removed
+		//printf("%.3d %s",i,ptrtxt2[i]); //debug_line_can_be_removed
 		i++;
 	}
 	fclose(file2);
 	free(text2);
 
+
 //some filter algorithm begin ==========================================
 	char dictOCT[]={"\011\040\041\042\043\044\045\046\047\050\051\052\053\054\055\056\057\072\073\074\075\076\077\100\133\134\135\136\137\140\173\174\175\176"};
 	//for(k=0;k<sizeof(dictOCT)-1;k++){printf("%.2d 0%o %c\n",k,dictOCT[k],dictOCT[k]);} //debug_line_can_be_removed
 	
-	//filtering text1 ==================================================
 	i=0;j=0;k=0;
 	while(i<linecnt1){
 		j=0;
@@ -251,7 +251,6 @@ float test3(char *filename1, char *filename2, char *resultS3){
 		i++;
 	}
 	
-	//filtering text2 ==================================================
 	i=0;j=0;k=0;
 	while(i<linecnt2){
 		j=0;
@@ -272,11 +271,14 @@ float test3(char *filename1, char *filename2, char *resultS3){
 	//copy word from each file1 ========================================
 	int cntWord1=0,lenWord1=0;
 	char *wordS1;
+	char *ptrtxtA;
 	char **wordCpy1=malloc(sizeof(char*)*1);
-	for(i=0,j=0;i<linecnt;i++){
-		while(wordS1=strtok_r(ptrtxt1[i],"\040",&ptrtxt1[i])){
+	for(i=0,j=0;i<linecnt1;i++){
+		ptrtxtA=ptrtxt1[i]; //this line avoid strtok memory leak
+		while(wordS1=strtok_r(ptrtxtA,"\040",&ptrtxtA)){
+		//while(wordS1=strsep(&ptrtxt1[i],"\040")){
 			//some fiter algorithm
-			if(ptrtxt1[i][0]!='\0'){
+			if(ptrtxtA[0]!='\0'){
 				cntWord1++;
 				wordCpy1=realloc(wordCpy1,sizeof(char*)*(cntWord1));
 				if(!wordCpy1){ //allocate check
@@ -291,17 +293,21 @@ float test3(char *filename1, char *filename2, char *resultS3){
 				j++;
 			}
 		}
+		free(ptrtxt1[i]);
 	}
 	free(ptrtxt1);
 	
 	//copy word from each file2 ========================================
 	int cntWord2=0,lenWord2=0;
 	char *wordS2;
+	char *ptrtxtB;
 	char **wordCpy2=malloc(sizeof(char*)*1);
-	for(i=0,j=0;i<linecnt;i++){
-		while(wordS2=strtok_r(ptrtxt2[i],"\040",&ptrtxt2[i])){
+	for(i=0,j=0;i<linecnt2;i++){
+		ptrtxtB=ptrtxt2[i]; //this line avoid strtok memory leak
+		while(wordS2=strtok_r(ptrtxtB,"\040",&ptrtxtB)){
+		//while(wordS2=strsep(&ptrtxt2[i],"\040")){
 			//some fiter algorithm
-			if(ptrtxt2[i][0]!='\0'){
+			if(ptrtxtB[0]!='\0'){
 				cntWord2++;
 				wordCpy2=realloc(wordCpy2,sizeof(char*)*(cntWord2));
 				if(!wordCpy2){ //allocate check
@@ -316,6 +322,7 @@ float test3(char *filename1, char *filename2, char *resultS3){
 				j++;
 			}
 		}
+		free(ptrtxt2[i]);
 	}
 	free(ptrtxt2);
 	
@@ -326,7 +333,7 @@ float test3(char *filename1, char *filename2, char *resultS3){
 	}
 	for(i=0;i<cntWord2;i++){
 		strtok(wordCpy2[i],"\n");
-		//printf("%d %d %s\n",i,strlen(wordCpy2[i]),wordCpy2[i]); //debug_line_can_be_removed
+		//printf("%d %s\n",i,wordCpy2[i]); //debug_line_can_be_removed
 	}
 
 //comparator algorithm begin ===========================================

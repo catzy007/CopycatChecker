@@ -136,7 +136,7 @@ void on_BtnCalculate_clicked(){
 		Tst1=test1(FileName1,FileName2,HasilS1);
 		Tst2=test2(FileName1,FileName2,HasilS2);
 		Tst3=test3(FileName1,FileName2,HasilS3);
-		//printf("%s\n%s\n%s\n",hasilS1,hasilS2,hasilS3); //debug_line_can_be_removed
+		//printf("%.2f-%.2f-%.2f\n",Tst1,Tst2,Tst3); //debug_line_can_be_removed
 		//calculate final result and convert to string
 		Percent=(Tst1*Mul1)+(Tst2*Mul2)+(Tst3*Mul3);
 		sprintf(PerStr,"%.2f%%",Percent);

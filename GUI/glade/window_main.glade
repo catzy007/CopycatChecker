@@ -155,314 +155,353 @@ See the The MIT License (MIT) for details.
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Copycat Checker</property>
     <property name="resizable">False</property>
-    <property name="window_position">center</property>
     <property name="default_width">390</property>
-    <property name="default_height">210</property>
+    <property name="default_height">200</property>
     <property name="icon">../Icon.png</property>
     <signal name="destroy" handler="on_window_main_destroy" swapped="no"/>
     <child>
       <placeholder/>
     </child>
     <child>
-      <object class="GtkFixed">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <child>
-          <object class="GtkLabel" id="TxtPercent">
-            <property name="width_request">150</property>
-            <property name="height_request">80</property>
+          <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">10</property>
-            <property name="margin_right">10</property>
-            <property name="margin_top">10</property>
-            <property name="margin_bottom">10</property>
-            <property name="label" translatable="yes">0.00%</property>
-            <property name="justify">fill</property>
-            <property name="wrap">True</property>
-            <attributes>
-              <attribute name="scale" value="2"/>
-            </attributes>
+            <child>
+              <object class="GtkGrid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">20</property>
+                    <property name="margin_top">20</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="label" translatable="yes">Test 1 : </property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">20</property>
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="label" translatable="yes">Test 2 : </property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">20</property>
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="label" translatable="yes">Test 3 : </property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="TxtTst1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_right">10</property>
+                    <property name="margin_top">20</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="label" translatable="yes">0.00%</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="TxtTst2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_right">10</property>
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="label" translatable="yes">0.00%</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="TxtTst3">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_right">10</property>
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="label" translatable="yes">0.00%</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">False</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">10</property>
+                    <property name="margin_right">10</property>
+                    <property name="margin_top">20</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="label" translatable="yes">Mul 1 :</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">10</property>
+                    <property name="margin_right">10</property>
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="label" translatable="yes">Mul 2 :</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">10</property>
+                    <property name="margin_right">10</property>
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="label" translatable="yes">Mul 3 :</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="StrIpt1">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="margin_right">10</property>
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">5</property>
+                    <property name="max_length">5</property>
+                    <property name="width_chars">3</property>
+                    <property name="text" translatable="yes">0.25</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="StrIpt2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="margin_right">10</property>
+                    <property name="margin_top">5</property>
+                    <property name="margin_bottom">5</property>
+                    <property name="max_length">5</property>
+                    <property name="width_chars">3</property>
+                    <property name="text" translatable="yes">0.25</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="StrIpt3">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="margin_right">10</property>
+                    <property name="margin_top">5</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="max_length">5</property>
+                    <property name="width_chars">3</property>
+                    <property name="text" translatable="yes">0.5</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">2</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">False</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">20</property>
+                    <property name="margin_right">20</property>
+                    <property name="margin_top">20</property>
+                    <property name="label" translatable="yes">Similarity Ratio</property>
+                    <property name="justify">fill</property>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="TxtPercent">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="margin_left">20</property>
+                    <property name="margin_right">20</property>
+                    <property name="margin_top">5</property>
+                    <property name="margin_bottom">10</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <property name="label" translatable="yes">0.00%</property>
+                    <property name="justify">fill</property>
+                    <attributes>
+                      <attribute name="scale" value="2"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
           </object>
           <packing>
-            <property name="x">220</property>
-            <property name="y">30</property>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="Text1">
-            <property name="width_request">150</property>
-            <property name="height_request">30</property>
+          <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="label" translatable="yes">Similarity Ratio</property>
-            <property name="justify">center</property>
+            <property name="margin_left">20</property>
+            <property name="margin_right">20</property>
+            <property name="resize_mode">queue</property>
+            <property name="row_homogeneous">True</property>
+            <property name="column_homogeneous">True</property>
+            <child>
+              <object class="GtkButton" id="BtnCalculate">
+                <property name="label" translatable="yes">Calculate!</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="margin_left">10</property>
+                <signal name="clicked" handler="on_BtnCalculate_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFileChooserButton" id="SelFile2">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_right">5</property>
+                <property name="resize_mode">queue</property>
+                <property name="title" translatable="yes"/>
+                <signal name="file-set" handler="on_SelFile2_file_set" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFileChooserButton" id="SelFile1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_right">5</property>
+                <property name="resize_mode">queue</property>
+                <property name="title" translatable="yes"/>
+                <signal name="file-set" handler="on_SelFile1_file_set" swapped="no"/>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
           </object>
           <packing>
-            <property name="x">220</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="BtnCalculate">
-            <property name="label" translatable="yes">Calculate!</property>
-            <property name="width_request">150</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Click This Button To Begin</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <signal name="clicked" handler="on_BtnCalculate_clicked" swapped="no"/>
-          </object>
-          <packing>
-            <property name="x">220</property>
-            <property name="y">120</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="TextTst1">
-            <property name="width_request">60</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="label" translatable="yes">Test 1 : </property>
-            <property name="justify">center</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkLabel" id="TextTst2">
-            <property name="width_request">60</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="label" translatable="yes">Test 2 : </property>
-            <property name="justify">center</property>
-          </object>
-          <packing>
-            <property name="y">40</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="TextTst3">
-            <property name="width_request">60</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="label" translatable="yes">Test 3 : </property>
-            <property name="justify">center</property>
-          </object>
-          <packing>
-            <property name="y">80</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="TxtTst1">
-            <property name="width_request">60</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">This test counting amount of character of file1 and file2 then compare it </property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="label" translatable="yes">0.00%</property>
-            <property name="justify">center</property>
-          </object>
-          <packing>
-            <property name="x">50</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="TxtTst2">
-            <property name="width_request">60</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">This test compare file1 and file2 line by line</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="label" translatable="yes">0.00%</property>
-            <property name="justify">center</property>
-          </object>
-          <packing>
-            <property name="x">50</property>
-            <property name="y">40</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="TxtTst3">
-            <property name="width_request">60</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">This test compare count of word from file1 and file2</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="label" translatable="yes">0.00%</property>
-            <property name="justify">center</property>
-          </object>
-          <packing>
-            <property name="x">50</property>
-            <property name="y">80</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="TxtStr1">
-            <property name="width_request">50</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="label" translatable="yes">Mul 1 </property>
-          </object>
-          <packing>
-            <property name="x">115</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="TxtStr2">
-            <property name="width_request">50</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="label" translatable="yes">Mul 2 </property>
-          </object>
-          <packing>
-            <property name="x">115</property>
-            <property name="y">40</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel" id="TxtStr3">
-            <property name="width_request">50</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="label" translatable="yes">Mul 3 </property>
-          </object>
-          <packing>
-            <property name="x">115</property>
-            <property name="y">80</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry" id="StrIpt1">
-            <property name="width_request">40</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="tooltip_text" translatable="yes">Change Value of Multiplier for Better Result</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="max_length">5</property>
-            <property name="width_chars">3</property>
-            <property name="text" translatable="yes">0.25</property>
-            <property name="input_purpose">number</property>
-          </object>
-          <packing>
-            <property name="x">160</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry" id="StrIpt2">
-            <property name="width_request">40</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="tooltip_text" translatable="yes">Change Value of Multiplier for Better Result</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="max_length">5</property>
-            <property name="width_chars">3</property>
-            <property name="text" translatable="yes">0.25</property>
-            <property name="input_purpose">number</property>
-          </object>
-          <packing>
-            <property name="x">160</property>
-            <property name="y">40</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkEntry" id="StrIpt3">
-            <property name="width_request">40</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="tooltip_text" translatable="yes">Change Value of Multiplier for Better Result</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="max_length">5</property>
-            <property name="width_chars">3</property>
-            <property name="text" translatable="yes">0.5</property>
-            <property name="input_purpose">number</property>
-          </object>
-          <packing>
-            <property name="x">160</property>
-            <property name="y">80</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkFileChooserButton" id="SelFile1">
-            <property name="width_request">100</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Select File1</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="title" translatable="yes">Select File1</property>
-            <signal name="file-set" handler="on_SelFile1_file_set" swapped="no"/>
-          </object>
-          <packing>
-            <property name="y">120</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkFileChooserButton" id="SelFile2">
-            <property name="width_request">100</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="tooltip_text" translatable="yes">Select File2</property>
-            <property name="margin_left">10</property>
-            <property name="margin_top">10</property>
-            <property name="title" translatable="yes">Select File2</property>
-            <signal name="file-set" handler="on_SelFile2_file_set" swapped="no"/>
-          </object>
-          <packing>
-            <property name="x">110</property>
-            <property name="y">120</property>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">1</property>
           </packing>
         </child>
         <child>
           <object class="GtkButton" id="BtnAboutStatus">
-            <property name="label" translatable="yes">About</property>
-            <property name="width_request">370</property>
-            <property name="height_request">30</property>
+            <property name="label">gtk-about</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
-            <property name="margin_left">10</property>
-            <property name="margin_right">10</property>
+            <property name="margin_left">20</property>
+            <property name="margin_right">20</property>
             <property name="margin_top">10</property>
-            <property name="margin_bottom">10</property>
+            <property name="margin_bottom">20</property>
+            <property name="use_stock">True</property>
             <signal name="clicked" handler="on_BtnAboutStatus_clicked" swapped="no"/>
           </object>
           <packing>
-            <property name="y">160</property>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>
